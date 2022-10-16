@@ -11,6 +11,6 @@ public class DZ_1_1 {
             result = result + next;
             next += 1;
         }
-        System.out.print(result + " ");
+        System.out.print(result);
     }
 }
