@@ -8,6 +8,8 @@ package DZ.DZ5;
 //  /   \        / \
 // 7     9     11   20
 
+import java.io.PrintStream;
+
 public class Tree {
 
     public static void main(String[] args) {
@@ -18,6 +20,7 @@ public class Tree {
                         new Node(3, new Node(5),
                                 new Node(6, new Node(11), new Node(20))));
         System.out.println("Nodes sum = " + root.sum());
+        Node.preOrder(root, "");
     }
     static class Node {
         int value;
@@ -32,7 +35,6 @@ public class Tree {
         public Node(int value){
             this.value = value;
         }
-
         public int sum () {
             int summ = value;
             if (left != null){
@@ -41,8 +43,22 @@ public class Tree {
             if (right != null){
                 summ += right.sum();
             }
-
             return summ;
+        }
+        public static void preOrder (Node root, String sp){
+            if (root!=null){
+                System.out.print(sp + root.value);
+                preOrder(root.left, "(");
+                if (root.left!=null){
+                    preOrder(root.right, ",");
+                }
+            if (root.right==null && root.left!=null){
+                    System.out.print(","+"null"+")");
+                }
+            if (root.right!=null){
+                    System.out.print(")");
+                }
+                }
         }
     }
 }
