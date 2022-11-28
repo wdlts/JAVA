@@ -1,45 +1,44 @@
 package DZ.DZ1_OOP;
-
+import DZ.DZ1_OOP.Chars.*;
 import java.util.ArrayList;
-
+import java.util.Random;
+import java.util.Scanner;
 public class Main {
+    public static int SIDE_SIZE = 10;
+    public static ArrayList<BaseHero> cyan;
+    public static ArrayList<BaseHero> green;
     public static void main(String[] args) {
+        init();
+        Scanner scanner = new Scanner(System.in);
 
-        ArrayList<BaseHero> dark = new ArrayList<>();
-
-        dark.add(new Robber(dark));
-        dark.add(new Monk(dark));
-        dark.add(new Peasant(dark));
-        dark.add(new Sharpshooter(dark));
-        dark.add(new Wizard(dark));
-        dark.add(new Robber(dark));
-        dark.add(new Monk(dark));
-        dark.add(new Peasant(dark));
-        dark.add(new Sharpshooter(dark));
-        dark.add(new Wizard(dark));
-
-        ArrayList<BaseHero> light = new ArrayList<>();
-
-        light.add(new Monk(light));
-        light.add(new Wizard(light));
-        light.add(new Lancer(light));
-        light.add(new Peasant(light));
-        light.add(new Wizard(light));
-        light.add(new Monk(light));
-        light.add(new Wizard(light));
-        light.add(new Lancer(light));
-        light.add(new Arbalester(light));
-        light.add(new Wizard(light));
-
-
-        dark.forEach(n -> System.out.println(n.getInfo()));
-        System.out.println();
-        light.forEach(n -> System.out.println(n.getInfo()));
-
-
-
-
-
+        while (true){
+            ConsoleView.view();
+            System.out.println("Press ENTER");
+            scanner.nextLine();
+        }
     }
-
+    private static void init (){
+        cyan = new ArrayList<>();
+        green = new ArrayList<>();
+        int x = 1;
+        int y = 1;
+        for (int i = 0; i <SIDE_SIZE; i++) {
+            switch (new Random().nextInt(4)){
+                case 0: cyan.add(new Peasant(cyan, x++, y)); break;
+                case 1: cyan.add(new Robber(cyan, x++, y)); break;
+                case 2: cyan.add(new Sharpshooter(cyan, x++, y)); break;
+                default: cyan.add(new Monk(cyan, x++, y));
+            }
+        }
+        x=1;
+        y=10;
+        for (int i = 0; i < SIDE_SIZE; i++) {
+            switch (new Random().nextInt(4)){
+                case 0: green.add(new Peasant(green, x++, y)); break;
+                case 1: green.add(new Lancer(green, x++, y)); break;
+                case 2: green.add(new Arbalester(green, x++, y)); break;
+                default: green.add(new Wizard(green, x++, y));
+            }
+        }
+    }
 }

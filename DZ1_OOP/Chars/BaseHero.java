@@ -1,7 +1,9 @@
-package DZ.DZ1_OOP;
+package DZ.DZ1_OOP.Chars;
+import DZ.DZ1_OOP.Vector2;
 import java.util.ArrayList;
 import java.util.Arrays;
-import static DZ.DZ1_OOP.GetName.getName;
+import static DZ.DZ1_OOP.Chars.GetName.getName;
+
 public abstract class BaseHero implements BaseInterface {
         int attack;
         int defence;
@@ -15,6 +17,9 @@ public abstract class BaseHero implements BaseInterface {
         boolean magic;
         String name;
         protected ArrayList<BaseHero> side;
+        protected Vector2 position;
+
+
 
     public BaseHero(int attack, int defence, int shots, int[] damage, int health, int maxHP,
                     int minHP, int speed, boolean delivery, boolean magic) {
@@ -29,8 +34,10 @@ public abstract class BaseHero implements BaseInterface {
         this.delivery = delivery;
         this.magic = magic;
         this.name = getName();
+    }
 
-
+    public Vector2 getPosition () {
+        return position;
     }
     @Override
     public String toString() {
@@ -46,7 +53,6 @@ public abstract class BaseHero implements BaseInterface {
                 "Name = " + name +" "+
                 "Class = " + getClass().getSimpleName() +" "+
                 "Health = " + health;
-
     }
 
     @Override
@@ -60,17 +66,14 @@ public abstract class BaseHero implements BaseInterface {
                 //"Speed = " + speed +" "+
                 //"Delivery = " + delivery +" "+
                 //"Magic = " + magic +" "+
-                "Name = " + name +" "+
-                "Class = " + getClass().getSimpleName() +" "+
+                name +" "+
+                getClass().getSimpleName() +" "+
                 "Health = " + health;
-
     }
 
     @Override
     public void Step(ArrayList<BaseHero> side){
-
     }
-
 }
 
 
