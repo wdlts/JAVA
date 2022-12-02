@@ -12,7 +12,9 @@ public class Peasant extends BaseHero {
 
     @Override
     public void Step(ArrayList<BaseHero> side) {
-
+            if (this.status.equals("Used")){
+                this.status="Stand";
+            }
     }
 }
 

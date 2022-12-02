@@ -44,8 +44,8 @@ public class ConsoleView {
         return str;
     }
     private static String formatDiv(String s){
-        return s.replace('a', 'г')
-                .replace('b', 'т')
+        return s.replace('a', 'Г')
+                .replace('b', 'Т')
                 .replace("c", "|")
                 .replace("d", "|")
                 .replace('e', '+')

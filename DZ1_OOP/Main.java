@@ -15,6 +15,8 @@ public class Main {
             ConsoleView.view();
             System.out.println("Press ENTER");
             scanner.nextLine();
+            green.forEach(n->n.Step(cyan));
+            cyan.forEach(n->n.Step(green));
         }
     }
     private static void init (){
@@ -23,21 +25,21 @@ public class Main {
         int x = 1;
         int y = 1;
         for (int i = 0; i <SIDE_SIZE; i++) {
-            switch (new Random().nextInt(4)){
-                case 0: cyan.add(new Peasant(cyan, x++, y)); break;
-                case 1: cyan.add(new Robber(cyan, x++, y)); break;
-                case 2: cyan.add(new Sharpshooter(cyan, x++, y)); break;
-                default: cyan.add(new Monk(cyan, x++, y));
+            switch (new Random().nextInt(4)) {
+                case 0 -> cyan.add(new Peasant(cyan, x++, y));
+                case 1 -> cyan.add(new Robber(cyan, x++, y));
+                case 2 -> cyan.add(new Sharpshooter(cyan, x++, y));
+                default -> cyan.add(new Monk(cyan, x++, y));
             }
         }
         x=1;
         y=10;
         for (int i = 0; i < SIDE_SIZE; i++) {
-            switch (new Random().nextInt(4)){
-                case 0: green.add(new Peasant(green, x++, y)); break;
-                case 1: green.add(new Lancer(green, x++, y)); break;
-                case 2: green.add(new Arbalester(green, x++, y)); break;
-                default: green.add(new Wizard(green, x++, y));
+            switch (new Random().nextInt(4)) {
+                case 0 -> green.add(new Peasant(green, x++, y));
+                case 1 -> green.add(new Lancer(green, x++, y));
+                case 2 -> green.add(new Arbalester(green, x++, y));
+                default -> green.add(new Wizard(green, x++, y));
             }
         }
     }
