@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public interface BaseInterface {
 
-    String getInfo();
 
-    void Step(ArrayList<BaseHero> baseHero);
+
+    void step(ArrayList<BaseHero> baseHero);
+    String getInfo();
 }

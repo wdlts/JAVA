@@ -1,31 +1,30 @@
 package DZ.DZ1_OOP.Chars;
+import DZ.DZ1_OOP.AnsiColors;
+import DZ.DZ1_OOP.HeroCLass.Statuses;
 import DZ.DZ1_OOP.Vector2;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 import static DZ.DZ1_OOP.Chars.GetName.getName;
 
 public abstract class BaseHero implements BaseInterface {
         int attack;
         int defence;
-        int shots;
+        protected int shots;
         int[] damage;
         int health;
         int maxHP;
         int minHP;
-        int speed;
+        protected int speed;
         boolean delivery;
-        boolean magic;
+        protected boolean magic;
         String name;
         protected ArrayList<BaseHero> side;
         protected Vector2 position;
-        protected String status;
-
-
+        Statuses status;
 
     public BaseHero(int attack, int defence, int shots, int[] damage, int health, int maxHP,
-                    int minHP, int speed, boolean delivery, boolean magic) {
+                    int minHP, int speed, boolean delivery, boolean magic, Statuses status) {
         this.attack = attack;
         this.defence = defence;
         this.shots = shots;
@@ -37,12 +36,42 @@ public abstract class BaseHero implements BaseInterface {
         this.delivery = delivery;
         this.magic = magic;
         this.name = getName();
-        this.status = "alive";
+        this.status = status;
+
 
     }
 
+    public void setStatus(Statuses status){
+        this.status = status;
+    }
+    public Statuses getStatus(){
+        return this.status;
+    }
     public Vector2 getPosition () {
         return position;
+    }
+    public void setPosition(Vector2 position) {
+        this.position = position;
+    }
+    public ArrayList<BaseHero> getSide(){
+        return side;
+    }
+    public int getHealth(){
+        return health;
+    }
+    public int getMaxHP(){
+        return maxHP;
+    }
+    public void setHP(int health){
+        if (health > getMaxHP()) this.health = maxHP;
+        else this.health = health;
+    }
+    private String getHeroName(){
+        return this.name;
+    }
+    public int[] getDamage(){return damage;}
+    public String getClassName () {
+        return getClass().getSimpleName();
     }
     @Override
     public String toString() {
@@ -56,57 +85,57 @@ public abstract class BaseHero implements BaseInterface {
                 "Delivery = " + delivery +" "+
                 "Magic = " + magic +" "+
                 "Name = " + name +" "+
-                "Class = " + getClass().getSimpleName() +" "+
+                "Class = " + getClassName()+" "+
                 "Health = " + health;
 
     }
 
     @Override
     public String getInfo(){
-        return //"Attack = " + attack +" "+
-                //"Defence = " + defence +" "+
-                "Shots = " + shots +" "+
-                //"Damage = " + Arrays.toString(damage) +" "+
-                //"maxHP = " + maxHP +" "+
-                //"minHP = " + minHP +" "+
-                //"Speed = " + speed +" "+
-                //"Delivery = " + delivery +" "+
-                //"Magic = " + magic +" "+
-                name +" "+
-                getClass().getSimpleName() +" "+
-                "Health = " + health+" "+
-                "Status = " + status;
+        String str = status +"";
+        String str2 = health +"";
+        if (status.equals(Statuses.DEAD)) str = AnsiColors.ANSI_RED+ getStatus() + AnsiColors.ANSI_RESET;
+        if (maxHP - health != 0) str2 = AnsiColors.ANSI_GREEN + health + AnsiColors.ANSI_RESET;
+        return name+" " + getClassName()+ " HP "  + str2 + " " + str ;
+
 
     }
 
 
-    @Override
-    public void Step(ArrayList<BaseHero> side){
-    }
-
-
-    public double distance (BaseHero h){
-        return Math.sqrt((h.getPosition().x - this.position.x)^2 + (h.getPosition().y - this.position.y)^2);
-    }
-
-    public int[] getDamage(){return damage;}
-
-    public void damage(int damage){
-        this.health = health-damage;
-        if (this.health<= 0){
-            this.health = 0;
-            this.status = "dead";
+    protected void getAttack(BaseHero hero) {
+        if (attack == hero.defence && speed < position.getDistance(hero.getPosition()))
+            hero.health -= (damage[0] + damage[1]) / 4;
+        if (attack == hero.defence) hero.health -= (damage[0] + damage[1]) / 2;
+        if (attack > hero.defence && speed < position.getDistance(hero.getPosition())) hero.health -= damage[1] / 2;
+        if (attack > hero.defence) hero.health -= damage[1];
+        if (attack < hero.defence && speed < position.getDistance(hero.getPosition())) hero.health -= damage[0] / 2;
+        else hero.health -= damage[0];
+        if (hero.health <= 0) {
+            hero.health = 0;
+            hero.setStatus(Statuses.DEAD);
         }
     }
+        public double distance (BaseHero h){
+            return Math.sqrt((h.getPosition().x - this.position.x) ^ 2 + (h.getPosition().y - this.position.y) ^ 2);
+        }
+        public void damage (int damage){
+            this.health = health - damage;
+            if (this.health <= 0) {
+                this.health = 0;
+                this.status = Statuses.DEAD;
+            }
+        }
+        protected int damageCalc (BaseHero h){
+            int value = 0;
+            int flg = this.attack - h.defence;
+            if (flg == 0) value = ((this.damage[0] + this.damage[1]) / 2);
+            if (flg > 0) value = this.damage[1];
+            if (flg < 0) value = this.damage[0];
+            return value;
+        }
 
-    protected int damageCalc (BaseHero h){
-        int value = 0;
-        int flg = this.attack - h.defence;
-        if (flg == 0) value = ((this.damage[0] + this.damage[1])/2);
-        if (flg > 0) value = this.damage[1];
-        if (flg < 0) value = this.damage[0];
-        return value;
-    }
+    public abstract void step(ArrayList<BaseHero> side);
 }
+
 
 

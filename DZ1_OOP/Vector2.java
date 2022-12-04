@@ -9,7 +9,11 @@ public class Vector2 {
     }
 
     public boolean isEqual (Vector2 pos){
-        if (pos.y == y & pos.x == x) return true;
-        return false;
+        return pos.y == y & pos.x == x;
+    }
+
+
+    public float getDistance(Vector2 position) {
+        return (float) Math.sqrt((x - position.x) * (x - position.x)+(y-position.y)*(y-position.y));
     }
 }

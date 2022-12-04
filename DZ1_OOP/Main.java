@@ -15,8 +15,8 @@ public class Main {
             ConsoleView.view();
             System.out.println("Press ENTER");
             scanner.nextLine();
-            green.forEach(n->n.Step(cyan));
-            cyan.forEach(n->n.Step(green));
+            green.forEach(n->n.step(cyan));
+            cyan.forEach(n->n.step(green));
         }
     }
     private static void init (){

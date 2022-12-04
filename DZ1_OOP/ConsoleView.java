@@ -1,5 +1,6 @@
 package DZ.DZ1_OOP;
-
+import DZ.DZ1_OOP.Chars.BaseHero;
+import DZ.DZ1_OOP.HeroCLass.Statuses;
 import java.util.Collections;
 public class ConsoleView {
     public static int step = 0;
@@ -28,20 +29,48 @@ public class ConsoleView {
         System.out.println("|");
         System.out.println(ConsoleView.bottom10);
     }
+
+
+
+
+
     private static String getChar(Vector2 position){
+//        String str = "| ";
+//        for (int i = 0; i < Main.SIDE_SIZE; i++) {
+//            if (Main.green.get(i).getPosition().isEqual(position)) str = "|" + AnsiColors
+//                    .ANSI_GREEN+Main.green.get(i)
+//                    .getClassName()
+//                    .charAt(0)+AnsiColors.ANSI_RESET+"|"+AnsiColors
+//                    .ANSI_CYAN+(Main.cyan.get(i).getInfo())+AnsiColors
+//                    .ANSI_RESET + " | " +AnsiColors.ANSI_GREEN+(Main.green.get(i)
+//                    .getInfo())+AnsiColors.ANSI_RESET;
+//            if (Main.cyan.get(i).getPosition().isEqual(position)) str = "|" + AnsiColors.ANSI_CYAN+Main.cyan.get(i)
+//                    .getClassName().charAt(0)+AnsiColors.ANSI_RESET;
+//        }
+//        return str;
+
         String str = "| ";
-        for (int i = 0; i < Main.SIDE_SIZE; i++) {
-            if (Main.green.get(i).getPosition().isEqual(position)) str = "|" + AnsiColors
-                    .ANSI_GREEN+Main.green.get(i)
-                    .getClass().getSimpleName()
-                    .charAt(0)+AnsiColors.ANSI_RESET+"|"+AnsiColors
-                    .ANSI_CYAN+(Main.cyan.get(i).getInfo())+AnsiColors
-                    .ANSI_RESET + " | " +AnsiColors.ANSI_GREEN+(Main.green.get(i)
-                    .getInfo())+AnsiColors.ANSI_RESET;
-            if (Main.cyan.get(i).getPosition().isEqual(position)) str = "|" + AnsiColors.ANSI_CYAN+Main.cyan.get(i)
-                    .getClass().getSimpleName().charAt(0)+AnsiColors.ANSI_RESET;
+        for (int i = 0; i < 10; i++) {
+            boolean alive = true;
+            if (Main.green.get(i).getPosition().isEqual(position)) {
+                if (Main.green.get(i).getStatus()== Statuses.DEAD) {
+                    alive=false;
+                    str = "|" +  AnsiColors.ANSI_GREEN + Main.green.get(i).getClassName().charAt(0) + AnsiColors.ANSI_RESET;
+                }
+                else str = "|" + AnsiColors.ANSI_GREEN + Main.green.get(i).getClassName()
+                        .charAt(0) + AnsiColors.ANSI_RESET+ "|" + AnsiColors.ANSI_CYAN + Main.cyan.get(i).getInfo() +AnsiColors.ANSI_RESET + "|" + AnsiColors.ANSI_GREEN + Main
+                        .green.get(i).getInfo() + AnsiColors.ANSI_RESET;
+            }
+            if (Main.cyan.get(i).getPosition().isEqual(position) && alive) {
+                if (Main.cyan.get(i).getStatus().equals(Statuses.DEAD))
+                    str = "|" + AnsiColors.ANSI_GREEN + Main.green.get(i).getClassName().charAt(0) + AnsiColors.ANSI_RESET + "|";
+                else str = "|" + AnsiColors.ANSI_CYAN + Main.cyan.get(i).getClassName().charAt(0) + AnsiColors.ANSI_RESET ;
+            }
         }
         return str;
+
+
+
     }
     private static String formatDiv(String s){
         return s.replace('a', 'Г')
