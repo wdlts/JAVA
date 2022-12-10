@@ -33,13 +33,13 @@ public abstract class Melee extends BaseHero {
             getAttack(target);
         int x = getPosition().x;
         int y = getPosition().y;
-        if (target.getPosition().y > y && checkPos(new Vector2(x, y + 1)))
+        if (target.getPosition().y > y && checkPos(new Vector2(x, y + 1)) && (y+1 <10))
             setPosition(new Vector2(x, y + 1));
-        else if (target.getPosition().y < y && checkPos(new Vector2(x, y - 1)))
+        if (target.getPosition().y < y && checkPos(new Vector2(x, y - 1)) && (y-1 >= 0))
             setPosition(new Vector2(x, y - 1));
-        else if (target.getPosition().x > x && checkPos(new Vector2(x + 1, y)))
+        if (target.getPosition().x > x && checkPos(new Vector2(x + 1, y)) && (x+1 < 10))
             setPosition(new Vector2(x + 1, y));
-        else if (target.getPosition().x > x && checkPos(new Vector2(x - 1, y)))
+        if (target.getPosition().x > x && checkPos(new Vector2(x - 1, y)) && x-1 >= 0)
             setPosition(new Vector2(x - 1, y));
     }
 

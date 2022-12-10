@@ -30,10 +30,6 @@ public class ConsoleView {
         System.out.println(ConsoleView.bottom10);
     }
 
-
-
-
-
     private static String getChar(Vector2 position){
 //        String str = "| ";
 //        for (int i = 0; i < Main.SIDE_SIZE; i++) {

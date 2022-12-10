@@ -127,11 +127,10 @@ public abstract class BaseHero implements BaseInterface {
         }
         protected int damageCalc (BaseHero h){
             int value = 0;
-            int flg = this.attack - h.defence;
-            if (flg == 0) value = ((this.damage[0] + this.damage[1]) / 2);
-            if (flg > 0) value = this.damage[1];
-            if (flg < 0) value = this.damage[0];
-            return value;
+            if (attack - h.defence > 0) {value = damage[1];}
+            else if (attack - h.defence < 0) {value = damage[0];}
+            else {value = (damage[1] + damage[0]) / 2;}
+            return value * this.health;
         }
 
     public abstract void step(ArrayList<BaseHero> side);

@@ -20,7 +20,9 @@ public abstract class Heal extends BaseHero {
 
     @Override
     public void step(ArrayList<BaseHero> side){
-        if (getStatus() == Statuses.DEAD) return;
+        if (getStatus() == Statuses.DEAD){
+            return;
+        }
         double minHealth = Double.MAX_VALUE;
         int index = 0;
 

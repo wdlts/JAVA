@@ -17,8 +17,18 @@ public class Wizard extends Heal {
             if (baseHero.health <= baseHero.minHP && baseHero.health !=0 && !baseHero.getClassName().equals("Peasant")) {
                 baseHero.health = baseHero.health - baseHero.damage[0];
             }
+//            if (baseHero.health < baseHero.getHealth()*0.75 && baseHero.side != this.side){
+//                baseHero.health = baseHero.health + baseHero.damage[0];
+//            }
+            if (baseHero.getStatus().equals(Statuses.DEAD) && baseHero.side == this.side) {
+                baseHero.health = 1;
+                baseHero.status=Statuses.ALIVE;
+            }
+//            if (baseHero.health > baseHero.getHealth()*0.75 && baseHero.side != this.side) {
+//                baseHero.health = baseHero.health - baseHero.damage[0];
+//            }
         }
     }
-    @Override
-    public String getInfo() {return super.getInfo();}
+//    @Override
+//    public String getInfo() {return super.getInfo();}
 }
