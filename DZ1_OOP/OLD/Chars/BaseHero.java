@@ -1,11 +1,11 @@
-package DZ.DZ1_OOP.Chars;
-import DZ.DZ1_OOP.AnsiColors;
-import DZ.DZ1_OOP.HeroCLass.Statuses;
-import DZ.DZ1_OOP.Vector2;
+package DZ.DZ1_OOP.OLD.Chars;
+import DZ.DZ1_OOP.OLD.AnsiColors;
+import DZ.DZ1_OOP.OLD.HeroCLass.Statuses;
+import DZ.DZ1_OOP.OLD.Vector2;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static DZ.DZ1_OOP.Chars.GetName.getName;
+import static DZ.DZ1_OOP.OLD.Chars.GetName.getName;
 
 public abstract class BaseHero implements BaseInterface {
         int attack;

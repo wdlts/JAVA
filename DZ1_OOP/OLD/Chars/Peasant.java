@@ -1,7 +1,7 @@
-package DZ.DZ1_OOP.Chars;
+package DZ.DZ1_OOP.OLD.Chars;
 
-import DZ.DZ1_OOP.HeroCLass.Statuses;
-import DZ.DZ1_OOP.Vector2;
+import DZ.DZ1_OOP.OLD.HeroCLass.Statuses;
+import DZ.DZ1_OOP.OLD.Vector2;
 
 import java.util.ArrayList;
 public class Peasant extends BaseHero {

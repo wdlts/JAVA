@@ -1,4 +1,4 @@
-package DZ.DZ1_OOP.Chars;
+package DZ.DZ1_OOP.OLD.Chars;
 
 import java.util.ArrayList;
 

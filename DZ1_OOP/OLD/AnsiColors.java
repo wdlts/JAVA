@@ -1,4 +1,4 @@
-package DZ.DZ1_OOP;
+package DZ.DZ1_OOP.OLD;
 
 public class AnsiColors {
     public static final String ANSI_RESET = "\u001B[0m";

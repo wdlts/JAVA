@@ -1,4 +1,4 @@
-package DZ.DZ1_OOP;
+package DZ.DZ1_OOP.OLD;
 
 public class Vector2 {
     public int x, y;

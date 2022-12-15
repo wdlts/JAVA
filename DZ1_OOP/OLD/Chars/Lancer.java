@@ -1,7 +1,7 @@
-package DZ.DZ1_OOP.Chars;
-import DZ.DZ1_OOP.HeroCLass.Melee;
-import DZ.DZ1_OOP.HeroCLass.Statuses;
-import DZ.DZ1_OOP.Vector2;
+package DZ.DZ1_OOP.OLD.Chars;
+import DZ.DZ1_OOP.OLD.HeroCLass.Melee;
+import DZ.DZ1_OOP.OLD.HeroCLass.Statuses;
+import DZ.DZ1_OOP.OLD.Vector2;
 
 import java.util.ArrayList;
 public class Lancer extends Melee {

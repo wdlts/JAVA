@@ -1,4 +1,4 @@
-package DZ.DZ1_OOP.Chars;
+package DZ.DZ1_OOP.OLD.Chars;
 
 public class GetName {
     public static String getName() {

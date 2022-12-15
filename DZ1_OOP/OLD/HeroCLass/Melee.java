@@ -1,7 +1,7 @@
-package DZ.DZ1_OOP.HeroCLass;
+package DZ.DZ1_OOP.OLD.HeroCLass;
 
-import DZ.DZ1_OOP.Chars.BaseHero;
-import DZ.DZ1_OOP.Vector2;
+import DZ.DZ1_OOP.OLD.Chars.BaseHero;
+import DZ.DZ1_OOP.OLD.Vector2;
 
 import java.util.ArrayList;
 

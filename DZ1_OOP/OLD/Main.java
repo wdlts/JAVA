@@ -1,5 +1,5 @@
-package DZ.DZ1_OOP;
-import DZ.DZ1_OOP.Chars.*;
+package DZ.DZ1_OOP.OLD;
+import DZ.DZ1_OOP.OLD.Chars.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;

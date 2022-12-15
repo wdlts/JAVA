@@ -1,6 +1,5 @@
-package DZ.DZ1_OOP;
-import DZ.DZ1_OOP.Chars.BaseHero;
-import DZ.DZ1_OOP.HeroCLass.Statuses;
+package DZ.DZ1_OOP.OLD;
+import DZ.DZ1_OOP.OLD.HeroCLass.Statuses;
 import java.util.Collections;
 public class ConsoleView {
     public static int step = 0;
